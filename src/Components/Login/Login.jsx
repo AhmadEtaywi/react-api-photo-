@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const userName = event.target.elements.email.value;
-    const user = users.find((user) => user.email === userName);
+    const user = users.find((user) => user.email.toLowerCase() === userName.toLowerCase());
     if (!user) {
       setError('Wrong Email please Try again !!!');
     } else {

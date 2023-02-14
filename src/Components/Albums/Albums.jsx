@@ -1,15 +1,19 @@
-import React ,{ useEffect, useState } from "react";
-// import { useNavigate } from 'react-router-dom';
+import React ,{ useEffect, useState,createContext } from "react";
+// import Photos from '../Photos/Photos'
+
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+export const UserContext = createContext(currentUser);
 
 
 function Albums(){
-    // let navigate = useNavigate();
     
     const [albums,setAlbums]=useState([])
-    console.log(albums);
+    // console.log(albums);
     const [error, setError] = useState(null);
     
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+ 
+
 useEffect(() => {
 getAlbums(currentUser);
     // eslint-disable-next-line
@@ -40,7 +44,13 @@ getAlbums(currentUser);
     //     setAlbums(albums);
     //   };
     return(
+      <UserContext.Provider value={currentUser}>
+
         <>
+
+        {/* <UserContext.Provider value={currentUser}>
+          <Photos />  
+        </UserContext.Provider> */}
         {albums.map((albums)=>(
                <div >
             <p key={Math.random()} id={albums.id} >{albums.title}</p>
@@ -48,7 +58,10 @@ getAlbums(currentUser);
         </div>
         
         ))
-}</>)
+}</>
+</UserContext.Provider>
+
+)
 }
 
 export default Albums
