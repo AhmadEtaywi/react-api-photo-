@@ -1,67 +1,64 @@
-import React ,{ useEffect, useState,createContext } from "react";
-// import Photos from '../Photos/Photos'
-
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-export const UserContext = createContext(currentUser);
+import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import MyContext from '../Context'
+import './Albums.css'
 
 
-function Albums(){
-    
-    const [albums,setAlbums]=useState([])
-    // console.log(albums);
-    const [error, setError] = useState(null);
-    
- 
+function Albums() {
+  const navigate = useNavigate();
+  const [albums, setAlbums] = useState([])
+  // const [error, setError] = useState(null);
+  /* the error state above with the old fetch that i made without async await */
+  const currentUser = useContext(MyContext);
 
-useEffect(() => {
-getAlbums(currentUser);
+  useEffect(() => {
+    getAlbums(currentUser);
     // eslint-disable-next-line
-},[]);
+  }, []);
 
-    const getAlbums = (user) => {
-        const { id } = user;
-    
-        fetch(`https://jsonplaceholder.typicode.com/users/${id}/albums`)
-          .then((Response) => Response.json())
-          .then((albums) => {
-            //   console.log(albums1);
-            setAlbums(albums);
-          })
-          .catch((error) => {
-            setError(error);
-          });
-      };
-      if (error) {
-        return <p>An error occurred: {error.message}</p>;
-      }
-    // const getAlbums = async (user) => {
-    //     const { id } = user;
-      
-    //     const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}/albums`);
-    //     const albums = await response.json();
-      
-    //     setAlbums(albums);
-    //   };
-    return(
-      <UserContext.Provider value={currentUser}>
+  // const getAlbums = (user) => {
+  //   const { id } = user;
 
-        <>
+  //   fetch(`https://jsonplaceholder.typicode.com/users/${id}/albums`)
+  //     .then((Response) => Response.json())
+  //     .then((albums) => {
+  //       setAlbums(albums);
+  //     })
+  //     .catch((error) => {
+  //       setError(error);
+  //     });
+  // };
 
-        {/* <UserContext.Provider value={currentUser}>
-          <Photos />  
-        </UserContext.Provider> */}
-        {albums.map((albums)=>(
-               <div >
-            <p key={Math.random()} id={albums.id} >{albums.title}</p>
-           
+  // if (error) {
+  //   return <p>An error occurred: {error.message}</p>;
+  // }
+  const getAlbums = async (user) => {
+      const { id } = user;
+
+      const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}/albums`);
+      const albums = await response.json();
+
+      setAlbums(albums);
+    };
+  const showPhotos = (albums1) => {
+    navigate(`/photos/?albums=${albums1}`);
+  }
+  return (
+
+    <div className="main">
+      {albums.map((albums) => (
+        <div key={Math.random()} className="albums" >
+          <div className="albums-Container">
+
+            <p id={albums.id} onClick={() => showPhotos(albums.id)} >{albums.title} </p>
+          </div>
         </div>
-        
-        ))
-}</>
-</UserContext.Provider>
+      )
+      )
+      }
+    </div>
 
-)
+  )
 }
 
 export default Albums

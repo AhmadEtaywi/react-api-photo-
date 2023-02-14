@@ -1,0 +1,27 @@
+.photos-main {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.125rem;
+    letter-spacing: 0.0094rem;
+    color: #000000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container {
+    background-color: #ece9e9ee;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    transition: transform 0.2s ease-in-out;
+    width: 20%;
+    margin: 10px;
+    text-align: center;
+}
+
+.container:hover {
+    transform: translateY(-4px);
+}

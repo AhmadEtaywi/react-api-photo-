@@ -1,14 +1,28 @@
-import React, { useContext } from 'react';
-import {UserContext} from '../Albums/Albums'
+import React,{useState,useEffect} from 'react';
+import './Photos.css'
 function Photos(){
 
-    const currentUser = useContext(UserContext);
+    const albumsId = new URLSearchParams(window.location.search).get("albums");
+    const [photos, setPhotos] = useState([]);
 
+    useEffect(() => {
+        fetch(`https://jsonplaceholder.typicode.com/albums/${albumsId}/photos`)
+          .then((Response) => Response.json())
+          .then((photos) => {
+            setPhotos(photos);
+          });
+      }, [albumsId]);
+console.log(photos);
     return(
-        <>
-        <p>sdasdasdasdasd</p>
-        <p>{currentUser.email}</p>
-        </>
+        <div className='photos-main'>
+            {photos.map((album,index)=>(
+
+                <div className='container'>
+                    <p className='photos-title'>{album.title}</p>
+                    <img alt="" src={photos[index].thumbnailUrl}></img>
+                </div>
+            ))}
+        </div>
     )
 }
 export default Photos
