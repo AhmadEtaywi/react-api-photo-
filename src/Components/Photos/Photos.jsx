@@ -12,7 +12,7 @@ function Photos(){
             setPhotos(photos);
           });
       }, [albumsId]);
-console.log(photos);
+      
     return(
         <div className='photos-main'>
             {photos.map((album,index)=>(
