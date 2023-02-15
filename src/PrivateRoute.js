@@ -1,7 +1,6 @@
 import { Outlet, Navigate } from 'react-router-dom'
 
 const PrivateRoutes = ({currentUser}) => {
-    console.log(3);
     return(
         
        

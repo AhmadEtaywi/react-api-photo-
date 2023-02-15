@@ -5,15 +5,17 @@ import Albums from './Components/Albums/Albums';
 import Photos from './Components/Photos/Photos';
 import PrivateRoutes from './PrivateRoute';
 import MyContext from './Components/Context';
+
+
 function App() {
-console.log(1);
   const [currentUser, setCurrentUser] = useState((JSON.parse(localStorage.getItem("currentUser"))));
-console.log(2);
   return (
     <BrowserRouter>
-      <MyContext.Provider value={{currentUser,setCurrentUser}}>
+      <MyContext.Provider value={{ currentUser, setCurrentUser }}>
         <Routes>
+
           <Route path="/" element={<Login />} />
+
           <Route element={<PrivateRoutes currentUser={currentUser} />}>
             <Route path="/albums" element={<Albums />} />
             <Route path="/photos" element={<Photos />} />

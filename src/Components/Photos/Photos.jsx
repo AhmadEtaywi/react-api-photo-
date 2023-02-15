@@ -17,7 +17,7 @@ function Photos(){
         <div className='photos-main'>
             {photos.map((album,index)=>(
 
-                <div className='container'>
+                <div className='container' key={album.id}>
                     <p className='photos-title'>{album.title}</p>
                     <img alt="" src={photos[index].thumbnailUrl}></img>
                 </div>
