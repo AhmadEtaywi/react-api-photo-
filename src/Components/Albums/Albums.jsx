@@ -25,27 +25,21 @@ const Albums = () => {
     }
   };
 
-  /* end */
   const showPhotos = (albumId) => {
     navigate(`/photos/?albums=${albumId}`);
   }
   return (
-<div>
-  <Header title={<p>Albums</p>} />
-
-
-    <div className="main" >
-      {albums.map((albums, index) => (
-        <div key={index} className="albums" >
-          <div className="albums-Container">
-            <p id={albums.id} onClick={() => showPhotos(albums.id)} >{albums.title} </p>
+    <div>
+      <Header title={<p>Albums</p>} />
+      <div className="main" >
+        {albums.map((albums, index) => (
+          <div key={index} className="albums" >
+            <div className="albums-Container">
+              <p id={albums.id} onClick={() => showPhotos(albums.id)} >{albums.title} </p>
+            </div>
           </div>
-        </div>
-      )
-      )
-    }
-    </div>
-
+        ))}
+      </div>
     </div>
   )
 }

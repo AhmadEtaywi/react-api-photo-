@@ -1,25 +1,25 @@
 .photos-main {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.125rem;
-    letter-spacing: 0.0094rem;
     color: #000000;
     display: flex;
     flex-wrap: wrap;
+    font-family: 'Roboto';
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
     justify-content: center;
+    letter-spacing: 0.0094rem;
+    line-height: 1.125rem;
 }
 
 .container {
     background-color: #ece9e9ee;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
     padding: 16px;
+    text-align: center;
     transition: transform 0.2s ease-in-out;
     width: 18%;
-    margin: 10px;
-    text-align: center;
 }
 
 .container:hover {
@@ -29,14 +29,14 @@
 
 @media screen and (max-width: 768px) {
     .container {
-    width: 48%;
     margin: 1%;
+    width: 48%;
     }
     }
     
     @media screen and (max-width: 480px) {
     .container {
-    width: 100%;
     margin: 2%;
+    width: 100%;
     }
     }
