@@ -1,0 +1,21 @@
+.Log-out{
+float: right;
+font-family: Arial, sans-serif;
+font-weight: bold;
+font-size: 16px;
+margin-right: 2rem;
+
+}
+.Log-out i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 8px;
+    color: white;
+  }button i {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 20px;
+  margin-right: 8px;
+  color: white;
+}
